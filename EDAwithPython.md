@@ -15,6 +15,8 @@ EDA is highly regarded as an essential and strategic step in the data analysis a
 ### EDA Process Flowchat <br>
 ![EDA Process Flowchart](https://github.com/wusinyee/MW-Portfolio/blob/45bf57281e2cd3c052eef0a41a2a291d84c1cfcc/EDAML.drawio.png)
 
+Here is how the EDA will proceed:
+1. Data Collection: Aquire the dataset
 
 -------------------------------
 
