@@ -1,13 +1,25 @@
-# 💫 About Me:
-🔭 I am currently working on data workflow automation, ML life cycle, and breaking new ground in documentation UI/UX<br>👯 I'm always eager to contribute to interesting open-source projects<br>🤝  I'm looking for help with incorporating Material Design into data visualization<br>🌱 I'm actively learning TabPy, Alteryx, and Material Design<br>⚡ I am also an avid enthusiast of philosophy, skydiving, and mental health research
+### 💫 About Me
 
-### ✍️ Random Dev Quote
-![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dark)
+🔭 I am currently working on Tableau x Alteryx, machine learning, Azure Databricks workflows, good documentation practices, and update my portfolio.<br>
+
+:scroll: I am renovating my portfolio and update my projects if nesscary.<br>
+
+🤔 I enjoy breaking down complex data sets and presenting Lthe insights using impactful visualization.<br> 
+
+👯 I'm open to contributing to open source projects and collaboration.<br>
+
+🤝 I'm looking for help with mastering other BI Tools such as Looker, Zoho, and Domo. Any resources, tutorials, or advice would be greatly appreciated!<br>
+
+🌱 I'm learning Rust, Robotics Process Automation, and project management methodologies.<br>
+
+💬 Ask me about dashboards (Tableau, Power BI, Qlik), GDocP, and business or data analytics things
+
+---
 
 
 
 
-# Unlocking Insights: A Collection of BI & Data Analysis Projects
+# Unlocking Insights: A Collection of Business Intelligence & Data Analysis Projects
 
 ### Project List:
 ### **Python**
@@ -91,8 +103,6 @@ Extract, Tranform, Load (ETL) with Microsoft SQL Server Integration Services
 
 <p align="left"> <a href="https://www.github.com/wusinyee" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" width="32" height="32" /></a> <a href="https://www.linkedin.com/in/sin-yee-mandy-wu-865a0a13a" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg" width="32" height="32" /></a> <a href="http://www.medium.com/@wuqianyi1021" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/medium.svg" width="32" height="32" /></a></p>
 
-### 😂 Random Dev Meme
-<img src='https://randommeme-five.vercel.app/' style="height: 400px;"/>
 
 ---
 [![](https://visitcount.itsvg.in/api?id=wusinyee&icon=0&color=0)](https://visitcount.itsvg.in)
