@@ -157,8 +157,8 @@ The box plot analysis indicated that the various types of dairy products exhibit
 
 ## EDA: Titanic dataset
 
-
-
+Reference
+https://medium.com/towardsdev/python-data-visualization-for-exploratory-data-analysis-eda-a25a94d73687
 
 
 
