@@ -17,6 +17,15 @@ EDA is highly regarded as an essential and strategic step in the data analysis a
 
 Here is how the EDA will proceed:
 1. Data Collection: Aquire the dataset
+2. Data cleaning and processing: Fill in the missing value. In this case, fill in the null / NaN rows with reasonable values. Perform data validation and mapping. Format the column name for consistency. 
+3. Assess whether the dataset is usable
+4. Statistics Technique: Find the mean, median, count distribution. Use the describe method and run statistical test
+5. Relationship Analysis: Use bivariate and multivariate analysis
+6. Visualization: Histogram, bar chart, boxplot, heatmap
+7. Determine if the dataset is suitable for feature engineering based on the information value and  feature importance from multiple algos
+8. Feature Engineering
+
+
 
 -------------------------------
 
