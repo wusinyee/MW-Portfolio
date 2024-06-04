@@ -168,7 +168,7 @@ The box plot analysis indicated that the various types of dairy products exhibit
 
 ## EDA: Methonds, techiques, and performance
 
-
+Reference: https://medium.com/@panData/eda-pipeline-techniques-and-methods-for-effective-machine-learning-models-506d8ff0d664
 
 
 
