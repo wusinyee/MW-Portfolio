@@ -1,17 +1,32 @@
-# Exploratory Data Analysis (EDA) on Dairy Products Dataset using Python
+# Exploratory Data Analysis (EDA) Using Python
 
-## Introduction
+#### Table of Contents
+
+- [EDA: Customer finance dataset](#EDA: Customer finance dataset)
+- [EDA: Dairy dataset](#EDA: Dairy dataset)
+- [EDA: Titanic dataset](#EDA: Titanic dataset)
+- [EDA: Methonds, techiques, and performance](#EDA: Methonds, techiques, and performance)
+
+------------------------------
+
+
+
+
+
+
+
+
+
+-------------------------------
+
+## EDA on dairy dataset
 Exploratory Data Analysis (EDA) is an essential step in any data analysis project. Exploratory data analysis (EDA) allows us to gain valuable insights into dairy products, such as their qualities, nutritional content, and customer feedback. By analyzing a dataset containing information about various dairy products, we can obtain perspective from the data set's big picture, then understand their composition, pricing, and consumer preferences.
-
-The dataset includes both numerical and categorical variables, such as product type, fat content, price, weight, calories, protein content, calcium content, sodium content, carbohydrates, sugar content, cholesterol content, and customer ratings. These variables provide a comprehensive view of the dairy products and help us uncover patterns and distributions.
-
-The EDA process involves loading the dataset, examining its structure, checking for missing values, and generating summary statistics. We then look into individual variables for revealing insights and explore relationships between variables. In addition, we will handle any missing values or outliers encountered during the analysis. We will use [Python code](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/main/EDAwithPython.md#source-code-) to perform the EDA.
-
-The outcomes of this EDA have major implications for dairy industry stakeholders such as producers, marketers, and consumers. In a competitive market, the insights gained can help with informed decision-making and efficiency optimization.
 
 
 ### EDA Process Flowchat <br>
 ![EDAprocess drawio](https://github.com/wusinyee/SYW-Portfolio-v2023/assets/108232087/85608d10-95b3-4580-be3d-137953dc8b78)
+
+The outcomes of this EDA have major implications for dairy industry stakeholders such as producers, marketers, and consumers. In a competitive market, the insights gained can help with informed decision-making and efficiency optimization.
 
 ## A systematic guide on performing EDA  <br>
 
@@ -33,7 +48,7 @@ df = pd.read_csv('dairy_products_dataset.csv')
 ```
 
 3.	Understanding the Dataset:
-*	The code provides an overview of the dataset
+*	The code snippet provides an overview of the dataset
 *	It prints the number of rows and columns in the dataset using the shape attribute of the DataFrame
 *	It displays the data types of each column using the dtypes attribute of the DataFrame  <br>
 ![step3numclmdatatypes](https://github.com/wusinyee/SYW-Portfolio-v2023/assets/108232087/3733ad66-fd1e-4940-9c83-357488634b07) <br>
@@ -46,7 +61,9 @@ print("Number of rows and columns:", df.shape)
 print("\nData types:\n", df.dtypes)
 print("\nSummary statistics:\n", df.describe())
 ```
-The analysis revealed various summary statistics for the dataset:   <br>
+This revealed various summary statistics for the dataset:   <br>
+The dataset includes both numerical and categorical variables, such as product type, fat content, price, weight, calories, protein content, calcium content, sodium content, carbohydrates, sugar content, cholesterol content, and customer ratings. These variables provide a comprehensive view of the dairy products and help us uncover patterns and distributions.  <br>
+
 * The average price of dairy products is *$3.79*, with a standard deviation of **$1.68**
 * The average weight is *590 grams*, with a standard deviation of **391 grams**
 * In terms of nutritional content, the average calorie count is *370*, with a standard deviation of **319.37**
@@ -134,57 +151,5 @@ The box plot analysis indicated that the various types of dairy products exhibit
 4.	Healthiest Product: Determining the healthiest product can be subjective and depends on specific health criteria. However, the EDA provides insights into the nutritional content of dairy products, such as calories, protein, carbohydrates, sugar, and cholesterol. Marketers can use this information to position certain products as healthier options based on their nutritional profiles. For example, a product with lower levels of sugar and cholesterol or higher protein content may be promoted as a healthier choice.    <br>
 5.	Pain Points: Identifying pain points requires additional information beyond what is provided by the EDA. Pain points may include customer complaints, issues with product quality, or gaps in the market. The EDA can serve as a starting point for identifying potential pain points by analyzing the ratings and understanding customer preferences. By identifying products with lower ratings or observing patterns in customer feedback, marketers can gain insights into potential pain points and areas for improvement.
 
-## Conclusion
-The EDA results can generate valuable insights for various aspects of the business, including marketing tactics, identifying the best and worst products, determining the most and least profitable products, understanding the healthiest product, and identifying pain points. It is important to note that while the EDA results provide valuable insights, additional analysis and information may be necessary to make conclusive decisions or address specific business challenges.
-
-### Source code <br>
-
-```python
-# Importing Libraries
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# Loading the Dataset
-df = pd.read_csv('/content/dairy_products_dataset.csv')
-
-# Understanding the Dataset
-print("Number of rows and columns:", df.shape)
-print("\nData types:\n", df.dtypes)
-print("\nSummary statistics:\n", df.describe())
-
-# Handling Missing Data
-print("\nMissing values:\n", df.isnull().sum())
-
-# Exploratory Data Analysis
-# Example visualizations
-plt.figure(figsize=(10, 6))
-sns.histplot(df['Price'])
-plt.title('Distribution of Price')
-plt.show()
-
-plt.figure(figsize=(10, 6))
-sns.boxplot(x='Type', y='Rating', data=df)
-plt.title('Rating by Dairy Product Type')
-plt.show()
-
-# Correlation Analysis
-correlation_matrix = df.corr()
-plt.figure(figsize=(10, 8))
-sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
-plt.title('Correlation Matrix')
-plt.show()
-
-# Feature Engineering (if required)
-# Example: Creating a new feature 'Price per Weight'
-df['Price per Weight'] = df['Price'] / df['Weight']
-
-# Visualizations
-plt.figure(figsize=(10, 6))
-sns.scatterplot(x='Calories', y='Protein', data=df, hue='Type')
-plt.title('Calories vs Protein by Dairy Product Type')
-plt.show()
-```
 
 
