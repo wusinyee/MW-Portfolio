@@ -5,7 +5,7 @@
 - [EDA: Customer finance dataset](https://github.com/wusinyee/MW-Portfolio/edit/main/EDAwithPython.md#eda-customer-finance-dataset)
 - [EDA: Dairy dataset](https://github.com/wusinyee/MW-Portfolio/edit/main/EDAwithPython.md#eda-dairy-dataset)
 - [EDA: Titanic dataset](https://github.com/wusinyee/MW-Portfolio/edit/main/EDAwithPython.md#eda-titanic-dataset)
-- [EDA: Methonds, techiques, and performance](https://github.com/wusinyee/MW-Portfolio/edit/main/EDAwithPython.md#eda-methonds-techiques-and-performance)
+
 
 ------------------------------
 
@@ -164,14 +164,5 @@ The box plot analysis indicated that the various types of dairy products exhibit
 -------------------------------
 
 
--------------------------------
-
-## EDA: Methonds, techiques, and performance
-
-Reference: https://medium.com/@panData/eda-pipeline-techniques-and-methods-for-effective-machine-learning-models-506d8ff0d664
 
 
-
-
-
--------------------------------
