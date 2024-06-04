@@ -2,16 +2,15 @@
 
 #### Table of Contents
 
-- [EDA: Customer finance dataset](#EDA: Customer finance dataset)
-- [EDA: Dairy dataset](#EDA: Dairy dataset)
-- [EDA: Titanic dataset](#EDA: Titanic dataset)
-- [EDA: Methonds, techiques, and performance](#EDA: Methonds, techiques, and performance)
+- [EDA: Customer finance dataset](https://github.com/wusinyee/MW-Portfolio/edit/main/EDAwithPython.md#eda-customer-finance-dataset)
+- [EDA: Dairy dataset](https://github.com/wusinyee/MW-Portfolio/edit/main/EDAwithPython.md#eda-dairy-dataset)
+- [EDA: Titanic dataset](https://github.com/wusinyee/MW-Portfolio/edit/main/EDAwithPython.md#eda-titanic-dataset)
+- [EDA: Methonds, techiques, and performance](https://github.com/wusinyee/MW-Portfolio/edit/main/EDAwithPython.md#eda-methonds-techiques-and-performance)
 
 ------------------------------
 
-
-
-
+## EDA: Finance dataset
+EDA is highly regarded as an essential and strategic step in the data analysis and machine learning processes. To understand the significance of EDA, data scientists thoroughly examine and dissect the data to gain valuable insights, while also detecting patterns, relationships, correlations, or anomalies. This process prepares the data for modeling by incorporating tasks like data cleaning, processing, visualization, and feature tuning. Exploratory data analysis uncovers the various characteristics, relationships, and distributions present in the dataset. The acquired knowledge of the data, uncovered through EDA, can guide feature tuning, extract insights on data behavior, and ultimately enhance model performance.
 
 
 
@@ -19,8 +18,8 @@
 
 -------------------------------
 
-## EDA on dairy dataset
-Exploratory Data Analysis (EDA) is an essential step in any data analysis project. Exploratory data analysis (EDA) allows us to gain valuable insights into dairy products, such as their qualities, nutritional content, and customer feedback. By analyzing a dataset containing information about various dairy products, we can obtain perspective from the data set's big picture, then understand their composition, pricing, and consumer preferences.
+## EDA: Dairy dataset
+EDA allows us to gain valuable insights into dairy products, such as their qualities, nutritional content, and customer feedback. By analyzing a dataset containing information about various dairy products, we can obtain perspective from the data set's big picture, then understand their composition, pricing, and consumer preferences.
 
 
 ### EDA Process Flowchat <br>
@@ -152,4 +151,27 @@ The box plot analysis indicated that the various types of dairy products exhibit
 5.	Pain Points: Identifying pain points requires additional information beyond what is provided by the EDA. Pain points may include customer complaints, issues with product quality, or gaps in the market. The EDA can serve as a starting point for identifying potential pain points by analyzing the ratings and understanding customer preferences. By identifying products with lower ratings or observing patterns in customer feedback, marketers can gain insights into potential pain points and areas for improvement.
 
 
+-------------------------------
 
+## EDA: Titanic dataset
+
+
+
+
+
+
+
+-------------------------------
+
+
+-------------------------------
+
+## EDA: Methonds, techiques, and performance
+
+
+
+
+
+
+
+-------------------------------
