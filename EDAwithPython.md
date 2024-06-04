@@ -25,7 +25,199 @@ Here is how the EDA will proceed:
 7. Determine if the dataset is suitable for feature engineering based on the information value and  feature importance from multiple algos
 8. Feature Engineering
 
+-------------------------------
 
+
+Get a general or big picture of the dataset, run a basic check on the column names, data type, null counts, and distinct values.
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+pd.set_option('display.max_rows', 500)
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', 1000)
+
+# df = pd.read_excel('data.xlsx')
+
+def column_summary(df):
+    summary_data = []
+    
+    for col_name in df.columns:
+        col_dtype = df[col_name].dtype
+        num_of_nulls = df[col_name].isnull().sum()
+        num_of_non_nulls = df[col_name].notnull().sum()
+        num_of_distinct_values = df[col_name].nunique()
+        
+        if num_of_distinct_values <= 10:
+            distinct_values_counts = df[col_name].value_counts().to_dict()
+        else:
+            top_10_values_counts = df[col_name].value_counts().head(10).to_dict()
+            distinct_values_counts = {k: v for k, v in sorted(top_10_values_counts.items(), key=lambda item: item[1], reverse=True)}
+
+        summary_data.append({
+            'col_name': col_name,
+            'col_dtype': col_dtype,
+            'num_of_nulls': num_of_nulls,
+            'num_of_non_nulls': num_of_non_nulls,
+            'num_of_distinct_values': num_of_distinct_values,
+            'distinct_values_counts': distinct_values_counts
+        })
+    
+    summary_df = pd.DataFrame(summary_data)
+    return summary_df
+
+# Example usage:
+# Assuming df is your DataFrame
+summary_df = column_summary(df)
+display(summary_df)
+```
+[Image of summary_df]
+
+Get addition value form the dataset.
+
+```python
+# Gets additional value such as min / median / max etc.
+def column_summary_plus(df):
+    result_df = pd.DataFrame(columns=['col_name', 'col_dtype', 'num_distinct_values',
+                                      'min_value', 'max_value',
+                                      'median_no_na', 'average_no_na','average_non_zero',
+                                      'null_present', 'nulls_num', 'non_nulls_num',
+                                      'distinct_values'])
+    
+    # Loop through each column in the DataFrame
+    for column in df.columns:
+        print(f"Start processing {column} col with {df[column].dtype} dtype")
+        # Get column dtype
+        col_dtype = df[column].dtype
+        # Get distinct values and their counts
+        value_counts = df[column].value_counts()
+        distinct_values = value_counts.index.tolist()
+        # Get number of distinct values
+        num_distinct_values = len(distinct_values)
+        # Get min and max values
+        sorted_values = sorted(distinct_values)
+        min_value = sorted_values[0] if sorted_values else None
+        max_value = sorted_values[-1] if sorted_values else None
+
+        # Get median value
+        non_distinct_val_list = sorted(df[column].dropna().tolist())
+        len_non_d_list = len(non_distinct_val_list)
+        if len(non_distinct_val_list) == 0:
+            median = None
+        else:
+            median = non_distinct_val_list[len_non_d_list//2]
+
+        # Get average value if value is number
+        if np.issubdtype(df[column].dtype, np.number):
+            if len(non_distinct_val_list) > 0:
+                average = sum(non_distinct_val_list)/len_non_d_list
+                non_zero_val_list = [v for v in non_distinct_val_list if v > 0]
+                average_non_zero = sum(non_zero_val_list)/len_non_d_list
+            else:
+                average = None
+                average_non_zero = None
+        else:
+            average = None
+            average_non_zero = None
+
+        # Check if null values are present
+        null_present = 1 if df[column].isnull().any() else 0
+
+        # Get number of nulls and non-nulls
+        num_nulls = df[column].isnull().sum()
+        num_non_nulls = df[column].notnull().sum()
+
+        # Distinct_values only take top 10 distinct values count
+        top_10_d_v = value_counts.head(10).index.tolist()
+        top_10_c = value_counts.head(10).tolist()
+        top_10_d_v_dict = dict(zip(top_10_d_v,top_10_c))
+
+        # Append the information to the result DataFrame
+        result_df = result_df.append({'col_name': column, 'col_dtype': col_dtype, 'num_distinct_values': num_distinct_values, 
+                                      'min_value': min_value, 'max_value': max_value,
+                                      'median_no_na': median, 'average_no_na': average, 'average_non_zero': average_non_zero,
+                                      'null_present': null_present, 'nulls_num': num_nulls, 'non_nulls_num': num_non_nulls,
+                                      'distinct_values': top_10_d_v_dict}, ignore_index=True)
+        
+    return result_df
+
+# Example usage:
+# Assuming df is your DataFrame
+summary_df = column_summary(df)
+display(summary_df)
+```
+
+If there are any errors, it is most likely due to datatype of the pandas dataframe. When saving a pandas dataframe into a csvfile, and then loading it back again, make sure to save the datatype and reload it with the datatype.
+
+```python
+### To Save Pandas to CSV
+def dtype_to_json(pdf, json_file_path: str) -> dict:
+    '''
+    Parameters
+    ----------
+    pdf : pandas.DataFrame
+        pandas.DataFrame so we can extract the dtype
+    json_file_path : str
+        the json file path location
+        
+    Returns
+    -------
+    Dict
+        The dtype dictionary used
+    
+    To create a json file which stores the pandas dtype dictionary for
+    use when converting back from csv to pandas.DataFrame.
+    '''
+    dtype_dict = pdf.dtypes.apply(lambda x: str(x)).to_dict()
+    
+    with open(json_file_path, 'w') as json_file:
+        json.dump(dtype_dict, json_file)
+    
+    return dtype_dict
+
+def download_csv_json(df, mainpath):
+    csvpath = f"{mainpath}.csv"
+    jsonfp = f"{mainpath}_dtype.json"
+    
+    dtypedict = dtype_to_json(df, jsonfp)
+    df.to_csv(csvpath, index=False)
+    
+    return csvpath, jsonfp
+
+
+# Example usage:
+download_csv_json(df, "/home/some_dir/file_1") 
+
+### To Load CSV to Pandas
+def json_to_dtype(jsonfilepath):
+    with open(jsonfilepath, 'r') as json_file:
+        loaded_dict = json.load(json_file)
+    return loaded_dict
+
+def csv_to_pandas(csvpath, jsonpath):
+    dtypedict = json_to_dtype(jsonpath)
+    pdf = pd.read_csv(csvpath,dtype=dtypedict)
+    
+    return pdf
+
+# Example usage:
+csvfp = "/home/some_dir/file_1.csv"
+jsonfp = "/home/some_dir/file_1_dtype.json"
+df = csv_to_pandas(csvfp, jsonfp)
+```
+
+One of the obvious issues is that the C_ID column was not a primary key, since the number of distinct values is not equal to the number of non-nulls. 
+
+```python
+pd.set_option('display.max_rows', 500)
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', 1000)
+print(df.head())
+print(df.describe())
+print(df.duplicated().sum())
+```
 
 -------------------------------
 
