@@ -1,5 +1,7 @@
 # Exploratory Data Analysis (EDA) Using Python
 
+* Project in progress *
+
 #### Table of Contents
 
 - [EDA: Customer finance dataset](https://github.com/wusinyee/MW-Portfolio/edit/main/EDAwithPython.md#eda-customer-finance-dataset)
