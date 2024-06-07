@@ -209,6 +209,10 @@ df = csv_to_pandas(csvfp, jsonfp)
 ```
 
 One of the obvious issues is that the C_ID column was not a primary key, since the number of distinct values is not equal to the number of non-nulls. 
+I am going to:
+1) Get a general idea of what the dataset is like
+2) Find the median / mean / rough statistical distribution
+3) Check that there are no duplicated rows
 
 ```python
 pd.set_option('display.max_rows', 500)
@@ -217,6 +221,134 @@ pd.set_option('display.width', 1000)
 print(df.head())
 print(df.describe())
 print(df.duplicated().sum())
+```
+Just a quick Check.
+
+```python
+# Identify numerical columns
+numerical_columns = df.select_dtypes(include=[np.number]).columns
+
+# Perform univariate analysis on numerical columns
+for column in numerical_columns:
+    # For continuous variables
+    if len(df[column].unique()) > 10:  # Assuming if unique values > 10, consider it continuous
+        plt.figure(figsize=(8, 6))
+        sns.histplot(df[column], kde=True)
+        plt.title(f'Histogram of {column}')
+        plt.xlabel(column)
+        plt.ylabel('Frequency')
+        plt.show()
+    else:  # For discrete or ordinal variables
+        plt.figure(figsize=(8, 6))
+        ax = sns.countplot(x=column, data=df)
+        plt.title(f'Count of {column}')
+        plt.xlabel(column)
+        plt.ylabel('Count')
+        
+        # Annotate each bar with its count
+        for p in ax.patches:
+            ax.annotate(format(p.get_height(), '.0f'), 
+                        (p.get_x() + p.get_width() / 2., p.get_height()), 
+                        ha = 'center', va = 'center', 
+                        xytext = (0, 5), 
+                        textcoords = 'offset points')
+        plt.show()
+```
+
+[Images of visualised dataset]
+
+Dataset transformation
+
+```python
+### Rename the column names for familiarity
+# This is if there is no requirement to use back the same column names.
+# This is also only done if there is no pre-existing format, or if the col names don't follow conventional format.
+# Normally will follow feature mart / dept format to name columns for easy understanding across board.
+
+df_l1 = df.copy()
+df_l1.rename(columns=lambda x: x.lower().replace(' ', '_'), inplace=True)
+new_col_dict = {'pc': 'c_pc', 'incm_typ': 'c_incm_typ', 'gn_occ': 'c_occ',
+                 'num_prd': 'prod_nos', 'casatd_cnt': 'casa_td_nos', 'mthcasa': 'casa_bal_avg_mth',
+                 'maxcasa': 'casa_bal_max_yr', 'mincasa': 'casa_bal_min_yr', 'drvcr': 'dr_cr_ratio_yr',
+                 'mthtd': 'td_bal_avg', 'maxtd': 'td_bal_max', 'asset_value': 'asset_tot_val',
+                 'hl_tag': 'loan_home_tag', 'al_tag': 'loan_auto_tag', 'pur_price_avg': 'prop_pur_price',
+                 'ut_ave': 'ut_avg', 'maxut': 'ut_max', 'n_funds': 'funds_nos',
+                 'cc_ave': 'cc_out_bal_avg_mth', 'max_mth_trn_amt': 'cc_txn_amt_max_mth', 'min_mth_trn_amt': 'cc_txn_amt_min_mth',
+                 'avg_trn_amt': 'cc_txn_amt_avg_mth', 'ann_trn_amt': 'cc_txn_amt_yr', 'ann_n_trx': 'cc_txn_nos_yr'}
+df_l1.rename(columns=new_col_dict, inplace=True)
+```
+
+Filling up missing or null values
+
+```python
+sns.set(style="whitegrid")
+
+# Create the boxplot
+plt.figure(figsize=(10, 6))  # Set the size of the plot
+sns.boxplot(x='c_incm_typ', y='casa_bal_max_yr', data=df_l1)
+
+# Set labels and title
+plt.xlabel('Income Type')
+plt.ylabel('casa_bal_max_yr')
+plt.title('Boxplot of casa_bal_max_yr by Income Type')
+plt.yscale('log')
+
+# Show the plot
+plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
+plt.tight_layout()  # Adjust layout to prevent clipping of labels
+plt.show()
+```
+[Image of boxplot]
+
+```python
+new_df = df_l1[['prop_pur_price','loan_home_tag']]
+null_loan_home = new_df[new_df['loan_home_tag'].isnull()]
+not_null_count = null_loan_home[~null_loan_home[['prop_pur_price']].isnull().any(axis=1)].shape[0]
+print("Number of rows where 'loan_home_tag' is null, but 'prop_pur_price' is not null:", not_null_count)
+
+new_df = df_l1[['prop_pur_price','loan_home_tag']]
+null_loan_home = new_df[new_df['prop_pur_price'].isnull()]
+not_null_count = null_loan_home[~null_loan_home[['loan_home_tag']].isnull().any(axis=1)].shape[0]
+print("Number of rows where 'prop_pur_price' is null, but 'loan_home_tag' is not null:", not_null_count)
+
+new_df = df_l1[['prop_pur_price','loan_home_tag']]
+condition = new_df['loan_home_tag'] == 1
+new_df[condition].describe()
+```
+
+Changing DT
+
+```python
+dtype_mapping = {'c_id': str, 'c_age': int, 'c_pc': int, 'c_incm_typ': int, 'prod_nos': int,
+                 'casa_td_nos': int, 'loan_home_tag': int, 'loan_auto_tag': int,
+                 'funds_nos': int, 'cc_txn_nos_yr': int, 'u_id': int}
+```
+
+Validate the data TBC
+
+Data Mapping for Categorial Features
+
+```python
+df_l1 = df.copy()
+df_l1.rename(columns=lambda x: x.lower().replace(' ', '_'), inplace=True)
+new_col_dict = {'pc': 'c_pc', 'incm_typ': 'c_incm_typ', 'gn_occ': 'c_occ',
+                 'num_prd': 'prod_nos', 'casatd_cnt': 'casa_td_nos', 'mthcasa': 'casa_bal_avg_mth',
+                 'maxcasa': 'casa_bal_max_yr', 'mincasa': 'casa_bal_min_yr', 'drvcr': 'dr_cr_ratio_yr',
+                 'mthtd': 'td_bal_avg', 'maxtd': 'td_bal_max', 'asset_value': 'asset_tot_val',
+                 'hl_tag': 'loan_home_tag', 'al_tag': 'loan_auto_tag', 'pur_price_avg': 'prop_pur_price',
+                 'ut_ave': 'ut_avg', 'maxut': 'ut_max', 'n_funds': 'funds_nos',
+                 'cc_ave': 'cc_out_bal_avg_mth', 'max_mth_trn_amt': 'cc_txn_amt_max_mth', 'min_mth_trn_amt': 'cc_txn_amt_min_mth',
+                 'avg_trn_amt': 'cc_txn_amt_avg_mth', 'ann_trn_amt': 'cc_txn_amt_yr', 'ann_n_trx': 'cc_txn_nos_yr'}
+df_l1.rename(columns=new_col_dict, inplace=True)
+fill_values = {'c_edu': 'Unknown', 'c_hse': 'UNKNOWN', 'c_pc': 0, 'c_incm_typ': 0,
+               'c_occ': 'UNKNOWN',
+               'casa_td_nos': 0, 'casa_bal_avg_mth': 0, 'casa_bal_max_yr': 0, 'casa_bal_min_yr': 0,
+               'td_bal_avg': 0, 'td_bal_max': 0,
+               'loan_home_tag':0, 'loan_auto_tag': 0,
+               'ut_avg': 0, 'ut_max': 0, 'funds_nos': 0,
+               'cc_txn_amt_max_mth': 0, 'cc_txn_amt_min_mth': 0, 'cc_txn_amt_avg_mth': 0,
+               'cc_txn_amt_yr': 0, 'cc_txn_nos_yr': 0, 'cc_lmt': 0}
+df_l1.fillna(fill_values, inplace=True)
 ```
 
 -------------------------------
