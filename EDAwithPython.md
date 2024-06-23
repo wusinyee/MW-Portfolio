@@ -12,6 +12,7 @@
 ------------------------------
 
 ## EDA: Finance dataset
+https://www.kaggle.com/datasets/dgawlik/nyse
 EDA is highly regarded as an essential and strategic step in the data analysis and machine learning processes. To understand the significance of EDA, data scientists thoroughly examine and dissect the data to gain valuable insights, while also detecting patterns, relationships, correlations, or anomalies. This process prepares the data for modeling by incorporating tasks like data cleaning, processing, visualization, and feature tuning. Exploratory data analysis uncovers the various characteristics, relationships, and distributions present in the dataset. The acquired knowledge of the data, uncovered through EDA, can guide feature tuning, extract insights on data behavior, and ultimately enhance model performance.
 
 ### EDA Process Flowchat <br>
