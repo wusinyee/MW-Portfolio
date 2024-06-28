@@ -8,20 +8,20 @@
 
 👯 I'm open to contributing to open source projects and collaboration.<br>
 
-🤝 I'm looking for help with mastering other BI Tools such as Looker, Zoho, and Domo. Any resources, tutorials, or advice would be greatly appreciated!<br>
+🤝 I'm looking for help with mastering other BI Tools such as Looker, Zoho, and Sisense. Any resources, tutorials, or advice would be greatly appreciated!<br>
 
-🌱 I'm learning Rust, Robotics Process Automation, and project management methodologies.<br>
+🌱 I'm learning Rust.<br>
 
-💬 Ask me about dashboards (Tableau, Power BI, Qlik), GDocP, and business or data analytics things
+💬 Ask me about dashboards (Tableau, Power BI, Qlik), and business or data analytics things
 
 ---
 
 
 
 
-# Unlocking Insights: A Collection of Business Intelligence & Data Analysis Projects
+# Insights in Action: A Collection of Data Analytics, Business Intelligence, and Machine Learning Projects
 
-### Project List:
+## Data Analytics:
 ### **Python**
 - [x] [Exploratory Data Analysis with Python](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/b1307ea78b43019802a944f187f3cf31ba005d47/EDAwithPython.md)
 - [x] [Sales data analysis and visualization with Python](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/55c05d4b57da2c4ad358811c9ffeafd1fa986b3e/Sales%20data%20analysis%20and%20visualization%20with%20Python.md)
@@ -36,34 +36,35 @@
 - [ ] [Contoso Sales Analytics Dashboard by Power BI](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/e4d7223d91b2be3a5462ed15762098b6ed4eb97d/Contoso%20Sales%20Overview%20Dashboard%20Project%20Docutmentation.md)
 - [x] [World Happiness Informational Dashboard- Tableau](https://public.tableau.com/views/WorldHappinessInformationalDashboard/Title?:language=en-US&:display_count=n&:origin=viz_share_link)
 - [x]  [Divvy Bike Rider Analysis - Tableau](https://public.tableau.com/views/DIVVYANALYSIS/RidersAnalysis?:language=en-US&:display_count=n&:origin=viz_share_link)
-### **Data Management**
-Includes data integration, transformation, processing, quality management, and governance
+### **Data Quality Management**
+- [x] [Data Quality Assessment Dashboard by Tableau](https://public.tableau.com/views/DQADashboard/DQADB?:language=en-US&:display_count=n&:origin=viz_share_link)
 - [x] [Extract, Tranform, Load (ETL) with Microsoft SQL Server Integration Services](https://www.canva.com/design/DAFbF6ULnlw/M-IEfwb71qhXO_sf0nTgiA/view?utm_content=DAFbF6ULnlw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - [x] [ETL with SSIS](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/88cbdcd21e2c18a24f3cfd018c4d035322e4439a/ETL%20Tech%20Doc.pdf)
+### **Data Modeling**
+- [ ] [A Sytematic Guide to Financail Modelling](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/e8095b429677f3d49f848016ad9e628f075dac99/financial_modelling.md)
+
+## **Business Analytics**
 ### **Documentation**
 - [ ] [Develop and Document a Risk Portfolio Management system](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/0ea685e756724c582282ba3ba1ed0af25a05a17f/RPMswithDjango.md)
 - [ ] Project Charter
 - [ ] [UAT: Tired of "Don't Deploy on Friday"? How about "Sign-off Friday"?](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/caa701ea7cddfe1dc90152019694171ec487f277/uatsignofffridayguide.md)
-### **Project Management**
-- [ ] [The Project Management Cliff Notes](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/f5f50447fb7865ef1a862a98a5ed327c9a9b65b2/The%20Project%20Management%20Cliff%20Notes.md)
-- [ ] Project management techniques to manage risks and issues
-- [ ] Effective communication with stakeholders()
 ### **Business Process Modelling**
 - [ ] Bussines Order Processing Map
 - [ ] Business process modeling and improvement
 - [ ] Business process automation  
 ### **Gather Requirements**
 - [x] [Business Requirement Documentation Sample](https://www.canva.com/design/DAFb08GxmS0/op8wOGsa2pDsh0tuxEQFcw/view?utm_content=DAFb08GxmS0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-### **Machine Learning**
-### **Data Analysis**
-### **Building Models**
-- [ ] [A Sytematic Guide to Financail Modelling](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/e8095b429677f3d49f848016ad9e628f075dac99/financial_modelling.md)
+### **Project Management**
+- [ ] [The Project Management Cliff Notes](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/f5f50447fb7865ef1a862a98a5ed327c9a9b65b2/The%20Project%20Management%20Cliff%20Notes.md)
+- [ ] Project management techniques to manage risks and issues
+- [ ] Effective communication with stakeholders()
+
+
+## **Machine Learning**
 
 
 
-
-
-Certification & Accomplishment
+### **Certification & Accomplishment**
 --------------------------------
 - [Intermediate Python](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/7eccd777e594ea17023ed3a033fb9eb320ab0637/IPython.pdf)
 - [Intermediate SQL](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/f483b722db454e79f99ff4fe3f9972a12addb34a/ISQL.pdf)
