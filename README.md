@@ -18,15 +18,18 @@
 - [x] [SQL Data Cleaning and Analysis](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/f2969db51e0b5e973965462903698f2f2009ff41/SQL%20Data%20Cleaning%20and%20Analysis.md)
 ### **Data Visualization**
 - [x] [Data Quality Assessment Dashboard by Tableau](https://public.tableau.com/views/DQADashboard/DQADB?:language=en-US&:display_count=n&:origin=viz_share_link)
-- [ ] [Contoso Sales Analytics Dashboard by Power BI](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/e4d7223d91b2be3a5462ed15762098b6ed4eb97d/Contoso%20Sales%20Overview%20Dashboard%20Project%20Docutmentation.md)
 - [x] [World Happiness Informational Dashboard- Tableau](https://public.tableau.com/views/WorldHappinessInformationalDashboard/Title?:language=en-US&:display_count=n&:origin=viz_share_link)
 - [x]  [Divvy Bike Rider Analysis - Tableau](https://public.tableau.com/views/DIVVYANALYSIS/RidersAnalysis?:language=en-US&:display_count=n&:origin=viz_share_link)
 ### **Data Quality Management**
 - [x] [Data Quality Assessment Dashboard by Tableau](https://public.tableau.com/views/DQADashboard/DQADB?:language=en-US&:display_count=n&:origin=viz_share_link)
+### **Data Integration**
 - [x] [Extract, Tranform, Load (ETL) with Microsoft SQL Server Integration Services](https://www.canva.com/design/DAFbF6ULnlw/M-IEfwb71qhXO_sf0nTgiA/view?utm_content=DAFbF6ULnlw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - [x] [ETL with SSIS](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/88cbdcd21e2c18a24f3cfd018c4d035322e4439a/ETL%20Tech%20Doc.pdf)
 ### **Data Modeling**
 - [ ] [A Sytematic Guide to Financail Modelling](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/e8095b429677f3d49f848016ad9e628f075dac99/financial_modelling.md)
+
+## **Business Intelligence**
+- [ ] [Contoso Sales Analytics Dashboard by Power BI](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/e4d7223d91b2be3a5462ed15762098b6ed4eb97d/Contoso%20Sales%20Overview%20Dashboard%20Project%20Docutmentation.md)
 
 ## **Business Analytics**
 ### **Documentation**
@@ -41,12 +44,12 @@
 - [x] [Business Requirement Documentation Sample](https://www.canva.com/design/DAFb08GxmS0/op8wOGsa2pDsh0tuxEQFcw/view?utm_content=DAFb08GxmS0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 ### **Project Management**
 - [ ] [The Project Management Cliff Notes](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/f5f50447fb7865ef1a862a98a5ed327c9a9b65b2/The%20Project%20Management%20Cliff%20Notes.md)
-- [ ] Project management techniques to manage risks and issues
-- [ ] Effective communication with stakeholders()
+- [ ] Project Management: A Comparative Analysis of Top Methodologies 
+- [ ] Orchestrating Change: A Stakeholder Management Playbook for IT System Upgrades
 
 
 ## **Machine Learning**
-
+- [ ] New York Stock Exchange Pharma Baseline Predictor (Linear Regression)
 
 
 ### **Certification & Accomplishment**
