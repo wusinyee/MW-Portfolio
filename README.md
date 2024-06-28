@@ -1,21 +1,6 @@
-### 💫 About Me
-
-🔭 I am currently working on Tableau x Alteryx, machine learning, Azure Databricks workflows, good documentation practices, and update my portfolio.<br>
-
-:scroll: I am renovating my portfolio and update my projects if nesscary.<br>
-
-🤔 I enjoy breaking down complex data sets and presenting Lthe insights using impactful visualization.<br> 
-
-👯 I'm open to contributing to open source projects and collaboration.<br>
-
-🤝 I'm looking for help with mastering other BI Tools such as Looker, Zoho, and Sisense. Any resources, tutorials, or advice would be greatly appreciated!<br>
-
-🌱 I'm learning Rust.<br>
-
-💬 Ask me about dashboards (Tableau, Power BI, Qlik), and business or data analytics things
-
----
-
+<p align="center">
+  <img src="https://github.com/wusinyee/wusinyee/blob/8d6b463648fb1ca2e2b8c4920f7f33080dccd0e0/introcard2.png" width="100%" title="Intro Card" alt="Intro Card">
+</p>
 
 
 
