@@ -21,10 +21,11 @@ The business in the dataset is a telecommunications company. This company offers
      - Account Information: Look into tenure with the company, type of contract (month-to-month, one year, two year), and payment method.
      - Service Usage: Evaluate types of services subscribed (phone, internet, online security, tech support).
      - Billing Details: Investigate monthly charges, total charges, and paperless billing status.
-   - Exploratory Data Analysis (EDA):
+### Exploratory Data Analysis (EDA):
      - Descriptive Statistics: Summarize key features to understand distributions.
      - Visualization: Use count plots for categorical variables and histograms/box plots for numerical variables to identify trends and patterns.
      - Correlation Analysis: Identify relationships between variables to understand which factors might be linked to higher churn rates.
+
 2. Extract Key Insights
    - Customer Segmentation:
      - High-Risk Segments: Identify customer segments with higher churn rates by examining demographic, service usage, and billing patterns.
