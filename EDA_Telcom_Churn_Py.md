@@ -1,9 +1,15 @@
-# Dataset Summary
+# Exploratory Data Analysis (EDA)
+
+- Analyze the distribution of numerical features (tenure, MonthlyCharges, TotalCharges)
+- Examine the relationship between these features and the target variable Churn
+- Create visualizations to show the impact of categorical variables on churn rate
+
+### Dataset Summary
 - **Dataset Name:** WAFn-UseC-Telco-Customer-Churn.csv
 - **Number of Rows:** 7043
 - **Number of Columns:** 21
 
-## Column Descriptions
+### Column Descriptions
 1. **customerID:** Unique identifier for each customer.
 2. **gender:** Gender of the customer (Male, Female).
 3. **SeniorCitizen:** Indicates if the customer is a senior citizen (1) or not (0).
@@ -37,3 +43,44 @@
 ## Statistical Summary
 - **Numerical Features:** Summary statistics for numerical columns (tenure, MonthlyCharges, TotalCharges).
 - **Categorical Features:** Unique values and distributions of categorical columns (gender, SeniorCitizen, Partner, etc.).
+
+----------------------------------
+
+1. **Import necessary libraries and load the data**
+
+```python
+!pip install plotly ipywidgets
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+from sklearn.preprocessing import LabelEncoder
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+from ipywidgets import widgets, interactive
+from IPython.display import display, HTML
+# Load the data
+df = pd.read_csv('WA_Fn-UseC_-Telco-Customer-Churn.csv')
+```
+
+
+2. **Initial data inspection**
+
+```python
+# Display basic information about the dataset
+print(df.info())
+
+# Display the data description
+print(df.describe())
+
+# Display the first few rows
+print(df.head())
+
+# Check for missing values
+print(df.isnull().sum())
+```
+
+
+
