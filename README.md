@@ -20,6 +20,7 @@
 ### **Data Visualization**
 - [x] [Data Quality Assessment Dashboard by Tableau](https://public.tableau.com/views/DQADashboard/DQADB?:language=en-US&:display_count=n&:origin=viz_share_link)
 - [x] [World Happiness Informational Dashboard- Tableau](https://public.tableau.com/views/WorldHappinessInformationalDashboard/Title?:language=en-US&:display_count=n&:origin=viz_share_link)
+- [ ] [Contoso Sales Analytics Dashboard by Power BI](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/e4d7223d91b2be3a5462ed15762098b6ed4eb97d/Contoso%20Sales%20Overview%20Dashboard%20Project%20Docutmentation.md)
 - [x]  [Divvy Bike Rider Analysis - Tableau](https://public.tableau.com/views/DIVVYANALYSIS/RidersAnalysis?:language=en-US&:display_count=n&:origin=viz_share_link)
 ### **Data Quality Management**
 - [x] [Data Quality Assessment Dashboard by Tableau](https://public.tableau.com/views/DQADashboard/DQADB?:language=en-US&:display_count=n&:origin=viz_share_link)
@@ -29,10 +30,15 @@
 ### **Data Modeling**
 - [ ] [A Sytematic Guide to Financail Modelling](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/e8095b429677f3d49f848016ad9e628f075dac99/financial_modelling.md)
 
+## **Machine Learning**
+- [ ] [New York Stock Exchange Pharmaceutical Sector Performance Linear Regression Model](https://github.com/wusinyee/NYSE-Pharma-Performance-LR-Model/blob/32dd045def8f56b7e7a9e20d16f26cba80e37a16/README.md)
+
 ## **Business Intelligence**
-- [ ] [Contoso Sales Analytics Dashboard by Power BI](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/e4d7223d91b2be3a5462ed15762098b6ed4eb97d/Contoso%20Sales%20Overview%20Dashboard%20Project%20Docutmentation.md)
+
 
 ## **Business Analytics**
+
+
 ### **Documentation**
 - [ ] [Develop and Document a Risk Portfolio Management system](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/0ea685e756724c582282ba3ba1ed0af25a05a17f/RPMswithDjango.md)
 - [ ] Project Charter
@@ -49,8 +55,6 @@
 - [ ] Orchestrating Change: A Stakeholder Management Playbook for IT System Upgrades
 
 
-## **Machine Learning**
-- [ ] New York Stock Exchange Pharma Baseline Predictor (Linear Regression)
 
 
 ### **Certification & Accomplishment**
