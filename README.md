@@ -1,9 +1,3 @@
-<p align="center">
-  <img src="https://github.com/wusinyee/wusinyee/blob/8d6b463648fb1ca2e2b8c4920f7f33080dccd0e0/introcard2.png" width="100%" title="Intro Card" alt="Intro Card">
-</p>
-
-
-
 # Insights in Action: A Collection of Data Analytics, Business Intelligence, and Machine Learning Projects
 
 ## Data Analytics:
