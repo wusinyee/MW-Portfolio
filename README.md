@@ -1,4 +1,11 @@
-# Insights in Action: A Collection of Data Analytics, Business Intelligence, and Machine Learning Projects
+# A Collection of Data Analytics, Business Intelligence, and Machine Learning Projects
+
+## **Machine Learning**
+- [x] [Unsupervised Learning for Tumor Segmentation in the Breast Cancer Wisconsin Dataset](https://github.com/wusinyee/CourseFinal_Unsupervised_Learning_BreastCancerWisconsinDS)
+- [x] [Deep Learning for Diabetic Retinopathy Detection](https://github.com/wusinyee/Diabetic_retinopathy_detection_DL/blob/e8cd936b5c58b6ba4cd30e73fb3f490783e73013/DeepLearningDRD_Project.pdf)
+- [x] [Credit Card Fraud Detection with Logistic Regression, Random Forest, and XGBoost](https://github.com/wusinyee/EDA-for-Machine-Learning-Honors-Project/blob/5c4a8b19e90bb29f3de3affa1eab872185861967/1_Credit%20Card%20Fraud%20Detection_%20Train%20and%20Evaluate%20Machine%20Learning%20Classifier%20Models%20Report.pdf)
+- [x] [Predictive Model using the Insurance Costs Dataset](https://github.com/wusinyee/EDA-for-Machine-Learning-Honors-Project/blob/5c4a8b19e90bb29f3de3affa1eab872185861967/Honorrs_Project_LR.ipynb)
+- [x] [Personalized Online Course Recommender System](https://github.com/wusinyee/Machine-Learning-Projects-All-Type-/blob/478f82eaa71e73719067813da259cf190424fb0e/ml-capstone-recommender_system_sinyeewu.pdf)
 
 ## Data Analytics:
 ### **Python**
@@ -24,8 +31,7 @@
 ### **Data Modeling**
 - [ ] [A Sytematic Guide to Financail Modelling](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/e8095b429677f3d49f848016ad9e628f075dac99/financial_modelling.md)
 
-## **Machine Learning**
-- [ ] [New York Stock Exchange Pharmaceutical Sector Performance Linear Regression Model](https://github.com/wusinyee/NYSE-Pharma-Performance-LR-Model/blob/32dd045def8f56b7e7a9e20d16f26cba80e37a16/README.md)
+
 
 ## **Business Intelligence**
 
