@@ -141,3 +141,6 @@ Extract, Tranform, Load (ETL) with Microsoft SQL Server Integration Services
 
 ---
 [![](https://visitcount.itsvg.in/api?id=wusinyee&icon=0&color=0)](https://visitcount.itsvg.in)
+
+## Certifications
+View my Coursera certificates in an interactive slideshow [here](https://wusinyee.github.io/MW-Portfolio/certificates.html)
