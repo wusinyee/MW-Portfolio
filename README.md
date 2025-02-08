@@ -1,4 +1,56 @@
-# A Collection of Data Analytics, Business Intelligence, and Machine Learning Projects
+# Data Science & Analytics Portfolio
+> Data Insights: Business Intelligence, Analytics, and Machine Learning
+
+## 📚 Table of Contents
+- [Projects](#projects)
+  - [Data Analysis](#data-analysis)
+  - [Machine Learning](#machine-learning)
+  - [SQL](#sql)
+  - [Business Intelligence](#business-intelligence)
+  - [Automation](#automation)
+- [Skills & Technologies](#skills--technologies)
+- [Certifications](#certifications)
+- [Technical Documentation](#technical-documentation)
+- [Guides & Resources](#guides--resources)
+
+## Projects
+
+### Data Analysis
+[Project descriptions with links]
+
+### Machine Learning
+[Project descriptions with links]
+
+### SQL
+[Project descriptions with links]
+
+### Business Intelligence
+[Project descriptions with links]
+
+### Automation
+[Project descriptions with links]
+
+## Skills & Technologies
+- Programming Languages: Python, SQL
+- Tools & Frameworks: PyTorch, Django
+- Data Visualization: Looker
+- Business Intelligence: Power BI
+- Database Management
+- ETL Processes
+- Machine Learning
+
+## Certifications
+- Google Data Analytics Professional Certificate
+- [Other certifications]
+
+## Technical Documentation
+[Links to technical documentation samples]
+
+## Guides & Resources
+[Links to guides and educational resources]
+
+## Contact Information
+[Your professional contact information]
 
 ## **Machine Learning**
 - [x] [Unsupervised Learning for Tumor Segmentation in the Breast Cancer Wisconsin Dataset](https://github.com/wusinyee/CourseFinal_Unsupervised_Learning_BreastCancerWisconsinDS)
