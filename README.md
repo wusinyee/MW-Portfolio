@@ -26,7 +26,7 @@
 - [x] [Exploratory Data Analysis with Python](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/b1307ea78b43019802a944f187f3cf31ba005d47/EDAwithPython.md)
 - [x] [Telecommunications Customer Churn Exploratory Data Analysis](https://github.com/wusinyee/MW-Portfolio/blob/777462f95c35efbee6a033ce773229d61d7f5e63/Telecom_Customer_Churn_EDA.md)
 - [x] [Sales data analysis and visualization with Python](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/55c05d4b57da2c4ad358811c9ffeafd1fa986b3e/Sales%20data%20analysis%20and%20visualization%20with%20Python.md)
-- [ ] [Pythonic Hassle-Free Automation Scripts](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/b85112e7cb4e5b5759a2027b222aeea722574033/Pythonic%20Hassle-Free%20Automation%20Scripts.md)
+- [x] [Pythonic Automation Scripts](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/b85112e7cb4e5b5759a2027b222aeea722574033/Pythonic%20Hassle-Free%20Automation%20Scripts.md)
 ### **SQL**
 - [x] [Advanced SQL Techniques for Actionable Insights in E-commerce Sales and Finance](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/cac1641a106928edddf31ab8848e3f1212eca84f/Advanced%20SQL%20Techniques%20for%20Actionable%20Insights%20in%20E-commerce%20Sales%20and%20Finance.md)
  - [ ] [Customer Sales Trend Analysis with PostgreSQL](https://github.com/wusinyee/SYW-Portfolio-v2023/blob/38b9d00d5b8cf32327f139afbf81cb207f9fe325/CustomerSalesTrendAnalysisPostgreSQL.md)
