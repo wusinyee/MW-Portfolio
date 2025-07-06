@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformer Architecture - Interactive Diagram</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/lucide-react@0.263.1/dist/lucide-react.css">
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { motion, AnimatePresence } = window["framer-motion"];
+        
+        // Import Lucide icons (you'll need to add these individually)
+        const Icons = {
+            ArrowRight: () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>,
+            Plus: () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>,
+            Lock: () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>,
+            Unlock: () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" /></svg>,
+            X: () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>,
+            ChevronRight: () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>,
+            Palette: () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>,
+        };
+
+        const TransformerDiagram = () => {
+            const [activeTab, setActiveTab] = useState('architecture');
+            const [showLegend, setShowLegend] = useState(true);
+            const [showMaskDemo, setShowMaskDemo] = useState(false);
+
+            // Color scheme definition
+            const colorScheme = {
+                encoder: {
+                    primary: '#EA580C',
+                    secondary: '#FED7AA',
+                    light: '#FFF7ED',
+                    text: 'Encoder components'
+                },
+                decoder: {
+                    primary: '#16A34A',
+                    secondary: '#BBF7D0',
+                    light: '#F0FDF4',
+                    text: 'Decoder components'
+                },
+                crossAttention: {
+                    primary: '#6366F1',
+                    secondary: '#C7D2FE',
+                    light: '#EEF2FF',
+                    text: 'Cross-attention connection'
+                },
+                masking: {
+                    primary: '#DC2626',
+                    secondary: '#FECACA',
+                    light: '#FEF2F2',
+                    text: 'Masked/Causal attention'
+                },
+                common: {
+                    primary: '#374151',
+                    secondary: '#E5E7EB',
+                    light: '#F9FAFB',
+                    text: 'Common components'
+                }
+            };
+
+            // Legend component
+            const Legend = () => (
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    className="fixed bottom-4 right-4 bg-white rounded-xl shadow-2xl p-4 max-w-xs border-2 border-gray-200 z-50"
+                >
+                    <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-2">
+                            <Icons.Palette />
+                            <h4 className="font-semibold text-gray-900">Color Legend</h4>
+                        </div>
+                        <button
+                            onClick={() => setShowLegend(false)}
+                            className="text-gray-400 hover:text-gray-600"
+                        >
+                            <Icons.X />
+                        </button>
+                    </div>
+                    
+                    <div className="space-y-2">
+                        {Object.entries(colorScheme).map(([key, value]) => (
+                            <div key={key} className="flex items-center gap-3">
+                                <div 
+                                    className="w-4 h-4 rounded border-2"
+                                    style={{ 
+                                        backgroundColor: value.light,
+                                        borderColor: value.primary
+                                    }}
+                                />
+                                <span className="text-xs text-gray-700">{value.text}</span>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
+            );
+
+            return (
+                <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-8">
+                    <div className="max-w-6xl mx-auto">
+                        {/* Header */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-center mb-8"
+                        >
+                            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                                Transformer Architecture
+                            </h1>
+                            <p className="text-lg text-gray-600 mb-6">Interactive Visualization</p>
+                        </motion.div>
+
+                        {/* Main Architecture */}
+                        <div className="bg-white rounded-2xl shadow-2xl p-8">
+                            <div className="relative flex justify-center items-start gap-12">
+                                
+                                {/* Encoder Section */}
+                                <div className="flex-1 max-w-xs">
+                                    <motion.div
+                                        initial={{ opacity: 0, x: -50 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        className="relative"
+                                    >
+                                        <div className="text-orange-600 font-bold text-xl mb-4 text-center">Encoder</div>
+                                        
+                                        <div className="relative bg-orange-50 rounded-xl p-4 border-2 border-orange-300">
+                                            <div className="absolute -left-3 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded">
+                                                Nx
+                                            </div>
+                                            
+                                            <div className="bg-orange-100 rounded-lg p-3 mb-3 border border-orange-400">
+                                                <div className="text-center text-sm font-medium text-orange-800 mb-2">Add & Norm</div>
+                                                <div className="bg-white rounded p-2 text-center">
+                                                    <div className="text-xs font-medium text-gray-700">Feed Forward</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="bg-orange-100 rounded-lg p-3 border border-orange-400">
+                                                <div className="text-center text-sm font-medium text-orange-800 mb-2">Add & Norm</div>
+                                                <div className="bg-white rounded p-2 text-center border border-blue-300">
+                                                    <div className="text-xs font-medium text-gray-700">Multi-Head Attention</div>
+                                                    <div className="text-xs text-blue-600 mt-1">(Bidirectional)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="mt-6 flex items-center justify-center gap-2">
+                                            <div className="text-xs font-medium text-gray-700">Positional</div>
+                                            <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
+                                                <Icons.Plus />
+                                            </div>
+                                            <div className="text-xs font-medium text-gray-700">Encoding</div>
+                                        </div>
+                                        
+                                        <div className="mt-4 bg-gray-100 rounded-lg p-3 border border-gray-300">
+                                            <div className="text-center text-sm font-medium text-gray-700">Input Embedding</div>
+                                        </div>
+                                        
+                                        <div className="text-center mt-4 text-sm font-medium text-gray-600">Inputs</div>
+                                    </motion.div>
+                                </div>
+
+                                {/* Decoder Section */}
+                                <div className="flex-1 max-w-xs">
+                                    <motion.div
+                                        initial={{ opacity: 0, x: 50 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        className="relative"
+                                    >
+                                        <div className="text-green-600 font-bold text-xl mb-4 text-center">Decoder</div>
+                                        
+                                        <div className="bg-gray-100 rounded-lg p-3 mb-3 border border-gray-300">
+                                            <div className="text-center text-sm font-medium text-gray-700">Output Probabilities</div>
+                                        </div>
+                                        
+                                        <div className="bg-gray-100 rounded-lg p-3 mb-3 border border-gray-300">
+                                            <div className="text-center text-sm font-medium text-gray-700">Softmax</div>
+                                        </div>
+                                        
+                                        <div className="bg-gray-100 rounded-lg p-3 mb-4 border border-gray-300">
+                                            <div className="text-center text-sm font-medium text-gray-700">Linear</div>
+                                        </div>
+                                        
+                                        <div className="relative bg-green-50 rounded-xl p-4 border-2 border-green-300">
+                                            <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded">
+                                                Nx
+                                            </div>
+                                            
+                                            <div className="bg-green-100 rounded-lg p-3 mb-3 border border-green-400">
+                                                <div className="text-center text-sm font-medium text-green-800 mb-2">Add & Norm</div>
+                                                <div className="bg-white rounded p-2 text-center">
+                                                    <div className="text-xs font-medium text-gray-700">Feed Forward</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="bg-green-100 rounded-lg p-3 mb-3 border border-green-400">
+                                                <div className="text-center text-sm font-medium text-green-800 mb-2">Add & Norm</div>
+                                                <div className="bg-indigo-50 rounded p-2 text-center border-2 border-indigo-400">
+                                                    <div className="text-xs font-medium text-gray-700">Cross-Attention</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="bg-green-100 rounded-lg p-3 border border-green-400">
+                                                <div className="text-center text-sm font-medium text-green-800 mb-2">Add & Norm</div>
+                                                <div className="bg-red-50 rounded p-2 text-center border-2 border-red-400">
+                                                    <div className="text-xs font-medium text-gray-700">Masked Self-Attention</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="mt-6 flex items-center justify-center gap-2">
+                                            <div className="text-xs font-medium text-gray-700">Positional</div>
+                                            <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
+                                                <Icons.Plus />
+                                            </div>
+                                            <div className="text-xs font-medium text-gray-700">Encoding</div>
+                                        </div>
+                                        
+                                        <div className="mt-4 bg-gray-100 rounded-lg p-3 border border-gray-300">
+                                            <div className="text-center text-sm font-medium text-gray-700">Output Embedding</div>
+                                        </div>
+                                        
+                                        <div className="text-center mt-4 text-sm font-medium text-gray-600">Outputs</div>
+                                    </motion.div>
+                                </div>
+
+                                {/* Cross-attention connection */}
+                                <svg className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none" viewBox="0 0 400 600">
+                                    <motion.path
+                                        initial={{ pathLength: 0 }}
+                                        animate={{ pathLength: 1 }}
+                                        transition={{ duration: 1, delay: 0.5 }}
+                                        d="M 140 300 Q 200 300, 260 300"
+                                        stroke="#6366F1"
+                                        strokeWidth="2"
+                                        fill="none"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+
+                        {/* Legend */}
+                        {showLegend && <Legend />}
+                        
+                        {!showLegend && (
+                            <button
+                                onClick={() => setShowLegend(true)}
+                                className="fixed bottom-4 right-4 bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-shadow"
+                            >
+                                <Icons.Palette />
+                            </button>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<TransformerDiagram />, document.getElementById('root'));
+    </script>
+</body>
+</html>
