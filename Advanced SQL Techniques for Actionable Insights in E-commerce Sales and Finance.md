@@ -1,4 +1,4 @@
-# Advanced SQL Techniques for Actionable Insights in E-commerce Sales and Finance
+# Advanced SQL Techniques for Actionable Insights in E-commerce
 
 This project showcases advanced data analysis and SQL skills with optimized queries, precise visualizations and clear explanations. The document includes technique description, demonstrations and practical applications for e-commerce analytics. The visualization is avaliable in a sperate html file: 
 
