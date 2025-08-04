@@ -1,6 +1,6 @@
 # Advanced SQL Techniques for Actionable Insights in E-commerce
 
-This project showcases advanced data analysis and SQL skills with optimized queries, precise visualizations and clear explanations. The document includes technique description, demonstrations and practical applications for e-commerce analytics. The visualization is avaliable in a sperate html file: 
+This project showcases advanced data analysis and SQL skills with optimized queries, precise visualizations and clear explanations. The document includes technique description, demonstrations and practical applications for e-commerce analytics. The visualization is avaliable here: <https://github.com/wusinyee/MW-Portfolio/blob/63d8682f700125bb91d10e3237ad74ba748e4c9c/visualization.pdf> 
 
 ## 1. Window Functions
 
