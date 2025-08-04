@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced SQL Techniques for E-commerce Analytics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .hero h1 {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .code-block {
+            background: #2c3e50;
+            color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 1.5rem 0;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 350px;
+            margin: 1.5rem 0;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, var(--success) 0%, #27ae60 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .insight-box h5 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 0.5rem 0;
+        }
+
+        .kpi-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .kpi-change {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .positive {
+            color: var(--success);
+        }
+
+        .negative {
+            color: var(--accent);
+        }
+
+        .tech-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .nav-tabs .nav-link {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .tab-content {
+            padding-top: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .kpi-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1>Advanced SQL Techniques for E-commerce Analytics</h1>
+                    <p class="lead">Unlock actionable insights from sales and finance data using advanced SQL techniques with stunning visualizations</p>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        <span class="badge bg-light text-dark p-2">Window Functions</span>
+                        <span class="badge bg-light text-dark p-2">CTEs</span>
+                        <span class="badge bg-light text-dark p-2">Recursive Queries</span>
+                        <span class="badge bg-light text-dark p-2">Performance Optimization</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="kpi-card mx-auto" style="max-width: 250px;">
+                        <i class="bi bi-graph-up tech-icon"></i>
+                        <div class="kpi-value">42%</div>
+                        <div class="kpi-label">Revenue Growth</div>
+                        <div class="kpi-change positive"><i class="bi bi-arrow-up"></i> 8% from last quarter</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Key Metrics -->
+        <div class="row mb-4">
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="kpi-card">
+                    <i class="bi bi-currency-dollar tech-icon"></i>
+                    <div class="kpi-value">$746K</div>
+                    <div class="kpi-label">Total Sales</div>
+                    <div class="kpi-change positive"><i class="bi bi-arrow-up"></i> 12% YoY</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="kpi-card">
+                    <i class="bi bi-people tech-icon"></i>
+                    <div class="kpi-value">21%</div>
+                    <div class="kpi-label">Customer Growth</div>
+                    <div class="kpi-change positive"><i class="bi bi-arrow-up"></i> 5% MoM</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="kpi-card">
+                    <i class="bi bi-cart-check tech-icon"></i>
+                    <div class="kpi-value">3.2K</div>
+                    <div class="kpi-label">Orders</div>
+                    <div class="kpi-change positive"><i class="bi bi-arrow-up"></i> 18% WoW</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="kpi-card">
+                    <i class="bi bi-pie-chart tech-icon"></i>
+                    <div class="kpi-value">68%</div>
+                    <div class="kpi-label">Target Achievement</div>
+                    <div class="kpi-change negative"><i class="bi bi-arrow-down"></i> 2% from target</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Window Functions Section -->
+        <div class="section">
+            <h2 class="section-title"><i class="bi bi-window-stack"></i> 1. Window Functions for Trend Analysis</h2>
+            <p>Window functions enable advanced trend analysis without collapsing rows. This example calculates monthly sales growth rates:</p>
+
+            <div class="code-block">
+                <pre>SELECT 
+    month, 
+    total_sales,
+    LAG(total_sales) OVER (ORDER BY month) AS previous_month_sales,
+    (total_sales - LAG(total_sales) OVER (ORDER BY month)) / 
+    LAG(total_sales) OVER (ORDER BY month) * 100 AS growth_rate
+FROM sales_table;</pre>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="windowChart"></canvas>
+            </div>
+
+            <div class="insight-box">
+                <h5><i class="bi bi-lightbulb"></i> Key Insight</h5>
+                <p>Q4 shows 18% average growth, indicating strong holiday season performance. Marketing efforts should be intensified during this period to maximize revenue.</p>
+            </div>
+        </div>
+
+        <!-- Subqueries Section -->
+        <div class="section">
+            <h2 class="section-title"><i class="bi bi-layers"></i> 2. Subqueries for Complex Comparisons</h2>
+            <p>Subqueries allow nesting queries within other queries for complex analyses. This example compares revenue against targets:</p>
+
+            <div class="code-block">
+                <pre>SELECT 
+    financial_target, 
+    (SELECT SUM(revenue) FROM e_commerce_sales) AS total_revenue,
+    (SELECT SUM(revenue) FROM e_commerce_sales) - financial_target AS variance
+FROM targets_table;</pre>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="subqueryChart"></canvas>
+            </div>
+
+            <div class="insight-box">
+                <h5><i class="bi bi-lightbulb"></i> Key Insight</h5>
+                <p>Electronics category consistently exceeds targets by 15%, while Fashion underperforms by 8%. Consider reallocating marketing resources to capitalize on Electronics strength.</p>
+            </div>
+        </div>
+
+        <!-- CTEs Section -->
+        <div class="section">
+            <h2 class="section-title"><i class="bi bi-diagram-3"></i> 3. Common Table Expressions (CTEs)</h2>
+            <p>CTEs break down complex queries into manageable parts. This example analyzes sales by category and region:</p>
+
+            <div class="code-block">
+                <pre>WITH category_sales AS (
+  SELECT product_category, SUM(order_amount) AS total_sales
+  FROM sales_table
+  GROUP BY product_category
+), region_sales AS (
+  SELECT region, SUM(order_amount) AS total_sales
+  FROM sales_table
+  GROUP BY region
+)
+SELECT cs.product_category, rs.region, cs.total_sales, rs.total_sales
+FROM category_sales cs
+JOIN region_sales rs ON 1=1;</pre>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="cteChart"></canvas>
+            </div>
+
+            <div class="insight-box">
+                <h5><i class="bi bi-lightbulb"></i> Key Insight</h5>
+                <p>Premium customers drive 65% of Electronics revenue. Targeted upselling campaigns could further increase this segment's contribution.</p>
+            </div>
+        </div>
+
+        <!-- Recursive Queries Section -->
+        <div class="section">
+            <h2 class="section-title"><i class="bi bi-arrow-repeat"></i> 4. Recursive Queries for Cumulative Analysis</h2>
+            <p>Recursive queries handle hierarchical or cumulative data. This example calculates quarterly cumulative revenue:</p>
+
+            <div class="code-block">
+                <pre>WITH RECURSIVE quarterly_revenue AS (
+  SELECT quarter, SUM(revenue) AS cumulative_revenue
+  FROM financial_data
+  WHERE quarter = 'Q1'
+  GROUP BY quarter
+  UNION ALL
+  SELECT f.quarter, f.revenue + qr.cumulative_revenue
+  FROM financial_data f
+  JOIN quarterly_revenue qr 
+    ON f.quarter = CONCAT('Q', CAST(SUBSTRING(qr.quarter, 2) AS INT) + 1)
+)
+SELECT quarter, cumulative_revenue
+FROM quarterly_revenue;</pre>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="recursiveChart"></canvas>
+            </div>
+
+            <div class="insight-box">
+                <h5><i class="bi bi-lightbulb"></i> Key Insight</h5>
+                <p>Q4 contributes 35% of annual revenue. Plan seasonal staffing and inventory management accordingly to maximize this critical period.</p>
+            </div>
+        </div>
+
+        <!-- Performance Optimization Section -->
+        <div class="section">
+            <h2 class="section-title"><i class="bi bi-speedometer2"></i> 5. Performance Optimization Techniques</h2>
+            <p>Optimizing query performance is crucial for efficient data analysis. Key techniques include indexing, partitioning, and query rewriting:</p>
+
+            <ul class="nav nav-tabs" id="optimizationTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="indexing-tab" data-bs-toggle="tab" data-bs-target="#indexing" type="button" role="tab">Indexing</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="partitioning-tab" data-bs-toggle="tab" data-bs-target="#partitioning" type="button" role="tab">Partitioning</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="rewriting-tab" data-bs-toggle="tab" data-bs-target="#rewriting" type="button" role="tab">Query Rewriting</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="optimizationTabsContent">
+                <div class="tab-pane fade show active" id="indexing" role="tabpanel">
+                    <div class="code-block">
+                        <pre>CREATE INDEX idx_sales_date ON sales_table (order_date);
+CREATE INDEX idx_sales_category ON sales_table (product_category);</pre>
+                    </div>
+                    <p>Creating indexes on frequently queried columns dramatically improves query performance.</p>
+                </div>
+                <div class="tab-pane fade" id="partitioning" role="tabpanel">
+                    <div class="code-block">
+                        <pre>CREATE TABLE sales_table (
+    sale_id SERIAL PRIMARY KEY,
+    order_date DATE,
+    product_category VARCHAR(50)
+) PARTITION BY RANGE (order_date);
+
+CREATE TABLE sales_2023_q1 PARTITION OF sales_table
+    FOR VALUES FROM ('2023-01-01') TO ('2023-04-01');</pre>
+                    </div>
+                    <p>Partitioning large tables improves query performance by limiting data scans.</p>
+                </div>
+                <div class="tab-pane fade" id="rewriting" role="tabpanel">
+                    <div class="code-block">
+                        <pre>-- Before: Subquery
+SELECT product_id, order_amount,
+  (SELECT product_name FROM product_table 
+   WHERE product_id = sales.product_id) AS product_name
+FROM sales_table;
+
+-- After: Join
+SELECT s.product_id, s.order_amount, p.product_name
+FROM sales_table s
+JOIN product_table p ON s.product_id = p.product_id;</pre>
+                    </div>
+                    <p>Rewriting subqueries as joins often improves performance.</p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="performanceChart"></canvas>
+            </div>
+
+            <div class="insight-box">
+                <h5><i class="bi bi-lightbulb"></i> Key Insight</h5>
+                <p>Optimization reduced report generation time from 45 minutes to 7 minutes, enabling near real-time decision making during peak sales periods.</p>
+            </div>
+        </div>
+
+        <!-- Employee Performance Section -->
+        <div class="section">
+            <h2 class="section-title"><i class="bi bi-person-workspace"></i> 6. Employee Sales Performance Analysis</h2>
+            <p>CTEs enable sophisticated employee performance analysis. This example tracks quarterly performance against targets:</p>
+
+            <div class="code-block">
+                <pre>WITH quarterly_sales AS (
+    SELECT 
+        e.employee_id, e.first_name, e.last_name,
+        EXTRACT(QUARTER FROM s.sale_date) AS quarter,
+        SUM(s.quantity * p.price) AS total_sales
+    FROM employees e
+    JOIN sales s ON e.employee_id = s.employee_id
+    JOIN products p ON s.product_id = p.product_id
+    WHERE EXTRACT(YEAR FROM s.sale_date) = 2023
+    GROUP BY e.employee_id, e.first_name, e.last_name, quarter
+),
+quarterly_targets AS (
+    SELECT employee_id, quarter, target
+    FROM sales_targets
+    WHERE year = 2023
+)
+SELECT 
+    qs.employee_id, qs.first_name, qs.last_name,
+    qs.quarter, qs.total_sales, qt.target,
+    (qs.total_sales - qt.target) / qt.target * 100 AS performance_percentage
+FROM quarterly_sales qs
+JOIN quarterly_targets qt ON qs.employee_id = qt.employee_id AND qs.quarter = qt.quarter
+ORDER BY qs.quarter, performance_percentage DESC;</pre>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="employeeChart"></canvas>
+            </div>
+
+            <div class="insight-box">
+                <h5><i class="bi bi-lightbulb"></i> Key Insight</h5>
+                <p>Lionel Messie exceeds targets by 35% on average, while Mahatma Ghandy misses targets by 15%. Implement targeted coaching for underperformers.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <p>wusinyee | Advanced SQL Techniques for E-commerce Analytics | Data Analysis Project</p>
+            <p>© 2023 All Rights Reserved</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Window Functions Chart
+        const windowCtx = document.getElementById('windowChart').getContext('2d');
+        new Chart(windowCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Monthly Sales ($K)',
+                    data: [45, 52, 48, 61, 58, 65, 72, 69, 75, 82, 88, 95],
+                    borderColor: '#3498db',
+                    backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: 'Growth Rate (%)',
+                    data: [null, 15.6, -7.7, 27.1, -4.9, 12.1, 10.8, -4.2, 8.7, 9.3, 7.3, 8.0],
+                    borderColor: '#e74c3c',
+                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                    tension: 0.4,
+                    yAxisID: 'y1'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Monthly Sales Growth Analysis',
+                        font: {
+                            size: 16
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Sales ($K)'
+                        }
+                    },
+                    y1: {
+                        position: 'right',
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Growth Rate (%)'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Subqueries Chart
+        const subqueryCtx = document.getElementById('subqueryChart').getContext('2d');
+        new Chart(subqueryCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Electronics', 'Fashion', 'Cosmetics', 'Home & Kitchen', 'Sports'],
+                datasets: [{
+                    label: 'Target Revenue ($K)',
+                    data: [120, 85, 65, 75, 55],
+                    backgroundColor: '#3498db'
+                }, {
+                    label: 'Actual Revenue ($K)',
+                    data: [138, 78, 68, 72, 58],
+                    backgroundColor: '#2ecc71'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Revenue vs Targets by Product Category',
+                        font: {
+                            size: 16
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Revenue ($K)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // CTEs Chart
+        const cteCtx = document.getElementById('cteChart').getContext('2d');
+        new Chart(cteCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Electronics', 'Fashion', 'Cosmetics', 'Home & Kitchen', 'Sports'],
+                datasets: [{
+                        label: 'Standard Customers',
+                        data: [45, 38, 28, 32, 25],
+                        backgroundColor: '#3498db'
+                    },
+                    {
+                        label: 'Premium Customers',
+                        data: [93, 40, 40, 40, 33],
+                        backgroundColor: '#9b59b6'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Sales by Product Category and Customer Segment',
+                        font: {
+                            size: 16
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Sales ($K)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Recursive Queries Chart
+        const recursiveCtx = document.getElementById('recursiveChart').getContext('2d');
+        new Chart(recursiveCtx, {
+            type: 'line',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    label: 'Quarterly Revenue',
+                    data: [180, 210, 245, 320],
+                    borderColor: '#3498db',
+                    backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                    fill: true
+                }, {
+                    label: 'Cumulative Revenue',
+                    data: [180, 390, 635, 955],
+                    borderColor: '#e74c3c',
+                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                    borderDash: [5, 5],
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Quarterly and Cumulative Revenue Analysis',
+                        font: {
+                            size: 16
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Revenue ($K)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Performance Optimization Chart
+        const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(performanceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Before Optimization', 'After Optimization'],
+                datasets: [{
+                    label: 'Query Execution Time (minutes)',
+                    data: [45, 7],
+                    backgroundColor: ['#e74c3c', '#2ecc71']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Query Performance Improvement',
+                        font: {
+                            size: 16
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Time (minutes)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Employee Performance Chart
+        const employeeCtx = document.getElementById('employeeChart').getContext('2d');
+        new Chart(employeeCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                        label: 'Lionel Messie',
+                        data: [120, 135, 140, 145],
+                        borderColor: '#2ecc71',
+                        backgroundColor: 'rgba(46, 204, 113, 0.2)'
+                    },
+                    {
+                        label: 'Mahatma Ghandy',
+                        data: [85, 80, 75, 70],
+                        borderColor: '#e74c3c',
+                        backgroundColor: 'rgba(231, 76, 60, 0.2)'
+                    },
+                    {
+                        label: 'Team Average',
+                        data: [100, 105, 110, 115],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.2)'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Employee Performance vs Targets',
+                        font: {
+                            size: 16
+                        }
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Performance %'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
